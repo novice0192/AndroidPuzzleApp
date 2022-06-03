@@ -42,216 +42,125 @@ class MainActivity : AppCompatActivity() {
 
         // Selecting number tile
 
+        fun sel_box(sel_field: TextView) {
+            if (sel_field.getText().toString() != "") {
+                dehglgt(sel_num_id)
+                sel_field.background = getDrawable(R.drawable.round_corner_hg)
+                sel_num = sel_field.text.toString()
+                sel_num_id = sel_field.id
+            }
+        }
+
         val sel_num_field1: TextView? = findViewById(R.id.numView11)
         sel_num_field1!!.setOnClickListener {
-            if (sel_num_field1.getText().toString() != "") {
-                dehglgt(sel_num_id)
-                sel_num_field1.background = getDrawable(R.drawable.round_corner_hg)
-                sel_num = sel_num_field1.text.toString()
-                sel_num_id = sel_num_field1.id
-            }
+            sel_box(sel_num_field1)
         }
 
         val sel_num_field2: TextView? = findViewById(R.id.numView12)
         sel_num_field2!!.setOnClickListener {
-            if (sel_num_field2.text.toString() != "") {
-                dehglgt(sel_num_id)
-                sel_num_field2.background = getDrawable(R.drawable.round_corner_hg)
-                sel_num = sel_num_field2.text.toString()
-                sel_num_id = sel_num_field2.id
-            }
+            sel_box(sel_num_field2)
         }
 
         val sel_num_field3: TextView? = findViewById(R.id.numView13)
         sel_num_field3!!.setOnClickListener {
-            if (sel_num_field3.text.toString() != "") {
-                dehglgt(sel_num_id)
-                sel_num_field3.background = getDrawable(R.drawable.round_corner_hg)
-                sel_num = sel_num_field3.text.toString()
-                sel_num_id = sel_num_field3.id
-            }
+            sel_box(sel_num_field3)
         }
 
         val sel_num_field4: TextView? = findViewById(R.id.numView14)
         sel_num_field4!!.setOnClickListener {
-            if (sel_num_field4.text.toString() != "") {
-                dehglgt(sel_num_id)
-                sel_num_field4.background = getDrawable(R.drawable.round_corner_hg)
-                sel_num = sel_num_field4.text.toString()
-                sel_num_id = sel_num_field4.id
-            }
+            sel_box(sel_num_field4)
         }
 
         val sel_num_field5: TextView? = findViewById(R.id.numView15)
         sel_num_field5!!.setOnClickListener {
-            if (sel_num_field5.text.toString() != "") {
-                dehglgt(sel_num_id)
-                sel_num_field5.background = getDrawable(R.drawable.round_corner_hg)
-                sel_num = sel_num_field5.text.toString()
-                sel_num_id = sel_num_field5.id
-            }
+            sel_box(sel_num_field5)
         }
 
         val sel_num_field6: TextView? = findViewById(R.id.numView21)
         sel_num_field6!!.setOnClickListener {
-            if (sel_num_field6.text.toString() != "") {
-                dehglgt(sel_num_id)
-                sel_num_field6.background = getDrawable(R.drawable.round_corner_hg)
-                sel_num = sel_num_field6.text.toString()
-                sel_num_id = sel_num_field6.id
-            }
+            sel_box(sel_num_field6)
         }
 
         val sel_num_field7: TextView? = findViewById(R.id.numView22)
         sel_num_field7!!.setOnClickListener {
-            if (sel_num_field7.text.toString() != "") {
-                dehglgt(sel_num_id)
-                sel_num_field7.background = getDrawable(R.drawable.round_corner_hg)
-                sel_num = sel_num_field7.text.toString()
-                sel_num_id = sel_num_field7.id
-            }
+            sel_box(sel_num_field7)
         }
 
         val sel_num_field8: TextView? = findViewById(R.id.numView23)
         sel_num_field8!!.setOnClickListener {
-            if (sel_num_field8.text.toString() != "") {
-                dehglgt(sel_num_id)
-                sel_num_field8.background = getDrawable(R.drawable.round_corner_hg)
-                sel_num = sel_num_field8.text.toString()
-                sel_num_id = sel_num_field8.id
-            }
+            sel_box(sel_num_field8)
         }
 
         val sel_num_field9: TextView? = findViewById(R.id.numView24)
         sel_num_field9!!.setOnClickListener {
-            if (sel_num_field9.text.toString() != "") {
-                dehglgt(sel_num_id)
-                sel_num_field9.background = getDrawable(R.drawable.round_corner_hg)
-                sel_num = sel_num_field9.text.toString()
-                sel_num_id = sel_num_field9.id
-            }
+            sel_box(sel_num_field9)
         }
 
         val sel_num_field10: TextView? = findViewById(R.id.numView25)
         sel_num_field10!!.setOnClickListener {
-            if (sel_num_field10.text.toString() != "") {
-                dehglgt(sel_num_id)
-                sel_num_field10.background = getDrawable(R.drawable.round_corner_hg)
-                sel_num = sel_num_field10.text.toString()
-                sel_num_id = sel_num_field10.id
-            }
+            sel_box(sel_num_field10)
         }
 
         // Placing number in equation
 
-        val eqn_num_field1: TextView? = findViewById(R.id.textView11)
-        eqn_num_field1!!.setOnClickListener {
-            if ((sel_num_id > 0) and ("" == eqn_num_field1.text.toString())) {
-                eqn_num_field1.text = sel_num
+        fun eqn_box(eqn_field: TextView) {
+            if ((sel_num_id > 0) and ("" == eqn_field.text.toString())) {
+                eqn_field.text = sel_num
                 val sel_num_field: TextView = findViewById(sel_num_id)
                 sel_num_field.text = ""
                 sel_num = ""
                 dehglgt(sel_num_id)
             }
+        }
+
+        val eqn_num_field1: TextView? = findViewById(R.id.textView11)
+        eqn_num_field1!!.setOnClickListener {
+            eqn_box(eqn_num_field1)
         }
 
         val eqn_num_field2: TextView? = findViewById(R.id.textView12)
         eqn_num_field2!!.setOnClickListener {
-            if ((sel_num_id > 0) and ("" == eqn_num_field2.text.toString())) {
-                eqn_num_field2.text = sel_num
-                val sel_num_field: TextView = findViewById(sel_num_id)
-                sel_num_field.text = ""
-                sel_num = ""
-                dehglgt(sel_num_id)
-            }
+            eqn_box(eqn_num_field2)
         }
 
         val eqn_num_field3: TextView? = findViewById(R.id.textView21)
         eqn_num_field3!!.setOnClickListener {
-            if ((sel_num_id > 0) and ("" == eqn_num_field3.text.toString())) {
-                eqn_num_field3.text = sel_num
-                val sel_num_field: TextView = findViewById(sel_num_id)
-                sel_num_field.text = ""
-                sel_num = ""
-                dehglgt(sel_num_id)
-            }
+            eqn_box(eqn_num_field3)
         }
 
         val eqn_num_field4: TextView? = findViewById(R.id.textView22)
         eqn_num_field4!!.setOnClickListener {
-            if ((sel_num_id > 0) and ("" == eqn_num_field4.text.toString())) {
-                eqn_num_field4.text = sel_num
-                val sel_num_field: TextView = findViewById(sel_num_id)
-                sel_num_field.text = ""
-                sel_num = ""
-                dehglgt(sel_num_id)
-            }
+            eqn_box(eqn_num_field4)
         }
 
         val eqn_num_field5: TextView? = findViewById(R.id.textView31)
         eqn_num_field5!!.setOnClickListener {
-            if ((sel_num_id > 0) and ("" == eqn_num_field5.text.toString())) {
-                eqn_num_field5.text = sel_num
-                val sel_num_field: TextView = findViewById(sel_num_id)
-                sel_num_field.text = ""
-                sel_num = ""
-                dehglgt(sel_num_id)
-            }
+            eqn_box(eqn_num_field5)
         }
 
         val eqn_num_field6: TextView? = findViewById(R.id.textView32)
         eqn_num_field6!!.setOnClickListener {
-            if ((sel_num_id > 0) and ("" == eqn_num_field6.text.toString())) {
-                eqn_num_field6.text = sel_num
-                val sel_num_field: TextView = findViewById(sel_num_id)
-                sel_num_field.text = ""
-                sel_num = ""
-                dehglgt(sel_num_id)
-            }
+            eqn_box(eqn_num_field6)
         }
 
         val eqn_num_field7: TextView? = findViewById(R.id.textView41)
         eqn_num_field7!!.setOnClickListener {
-            if ((sel_num_id > 0) and ("" == eqn_num_field7.text.toString())) {
-                eqn_num_field7.text = sel_num
-                val sel_num_field: TextView = findViewById(sel_num_id)
-                sel_num_field.text = ""
-                sel_num = ""
-                dehglgt(sel_num_id)
-            }
+            eqn_box(eqn_num_field7)
         }
 
         val eqn_num_field8: TextView? = findViewById(R.id.textView42)
         eqn_num_field8!!.setOnClickListener {
-            if ((sel_num_id > 0) and ("" == eqn_num_field8.text.toString())) {
-                eqn_num_field8.text = sel_num
-                val sel_num_field: TextView = findViewById(sel_num_id)
-                sel_num_field.text = ""
-                sel_num = ""
-                dehglgt(sel_num_id)
-            }
+            eqn_box(eqn_num_field8)
         }
 
         val eqn_num_field9: TextView? = findViewById(R.id.textView51)
         eqn_num_field9!!.setOnClickListener {
-            if ((sel_num_id > 0) and ("" == eqn_num_field9.text.toString())) {
-                eqn_num_field9.text = sel_num
-                val sel_num_field: TextView = findViewById(sel_num_id)
-                sel_num_field.text = ""
-                sel_num = ""
-                dehglgt(sel_num_id)
-            }
+            eqn_box(eqn_num_field9)
         }
 
         val eqn_num_field10: TextView? = findViewById(R.id.textView52)
         eqn_num_field10!!.setOnClickListener {
-            if ((sel_num_id > 0) and ("" == eqn_num_field10.text.toString())) {
-                eqn_num_field10.text = sel_num
-                val sel_num_field: TextView = findViewById(sel_num_id)
-                sel_num_field.text = ""
-                sel_num = ""
-                dehglgt(sel_num_id)
-            }
+            eqn_box(eqn_num_field10)
         }
 
         val reset_puzzle: Button = findViewById(R.id.reset)
