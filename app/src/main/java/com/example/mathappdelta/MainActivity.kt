@@ -223,8 +223,6 @@ class MainActivity : AppCompatActivity() {
         if (sel_num_id != 0) {
             val oldtxt: TextView = findViewById(sel_num_id)
             oldtxt.background = getDrawable(R.drawable.round_corner)
-            //val dump: TextView = findViewById(R.id.textnumView11)
-            //dump.text = oldtxt.id.toString()
         }
     }
 
@@ -250,7 +248,6 @@ class MainActivity : AppCompatActivity() {
         for (i in oprtr) {
             numlst.addAll((1..32).shuffled().slice(0..1))
         }
-        //numlst.add(-1)
 
         for (i in 0..4) {
             if (oprtr[i] == "/") {
