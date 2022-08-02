@@ -11,7 +11,7 @@ import android.widget.TextView
 import android.widget.Toast
 import kotlin.math.abs
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), View.OnClickListener {
 
     private val oprtrlst = listOf("+", "-", "*", "/")
     private val oprtrids: List<Int> = listOf(R.id.opView1, R.id.opView2, R.id.opView3, R.id.opView4, R.id.opView5)
@@ -22,6 +22,8 @@ class MainActivity : AppCompatActivity() {
 
     private var score = 0
     private var life = 3
+    private var sel_num = ""
+    private var sel_num_id = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,131 +39,69 @@ class MainActivity : AppCompatActivity() {
         resassgn(randoprtr, numlst)
         textclear()
 
-        var sel_num = ""
-        var sel_num_id = 0
+        //selecting numbers
+        
+        val sel_num_field1 = findViewById<TextView>(R.id.numView11)
+        sel_num_field1.setOnClickListener(this)
 
-        // Selecting number tile
+        val sel_num_field2 = findViewById<TextView>(R.id.numView12)
+        sel_num_field2.setOnClickListener(this)
 
-        fun sel_box(sel_field: TextView) {
-            if (sel_field.getText().toString() != "") {
-                dehglgt(sel_num_id)
-                sel_field.background = getDrawable(R.drawable.round_corner_hg)
-                sel_num = sel_field.text.toString()
-                sel_num_id = sel_field.id
-            }
-        }
+        val sel_num_field3 = findViewById<TextView>(R.id.numView13)
+        sel_num_field3.setOnClickListener(this)
 
-        val sel_num_field1: TextView? = findViewById(R.id.numView11)
-        sel_num_field1!!.setOnClickListener {
-            sel_box(sel_num_field1)
-        }
+        val sel_num_field4 = findViewById<TextView>(R.id.numView14)
+        sel_num_field4.setOnClickListener(this)
 
-        val sel_num_field2: TextView? = findViewById(R.id.numView12)
-        sel_num_field2!!.setOnClickListener {
-            sel_box(sel_num_field2)
-        }
+        val sel_num_field5 = findViewById<TextView>(R.id.numView15)
+        sel_num_field5.setOnClickListener(this)
 
-        val sel_num_field3: TextView? = findViewById(R.id.numView13)
-        sel_num_field3!!.setOnClickListener {
-            sel_box(sel_num_field3)
-        }
+        val sel_num_field6 = findViewById<TextView>(R.id.numView21)
+        sel_num_field6.setOnClickListener(this)
 
-        val sel_num_field4: TextView? = findViewById(R.id.numView14)
-        sel_num_field4!!.setOnClickListener {
-            sel_box(sel_num_field4)
-        }
+        val sel_num_field7 = findViewById<TextView>(R.id.numView22)
+        sel_num_field7.setOnClickListener(this)
 
-        val sel_num_field5: TextView? = findViewById(R.id.numView15)
-        sel_num_field5!!.setOnClickListener {
-            sel_box(sel_num_field5)
-        }
+        val sel_num_field8 = findViewById<TextView>(R.id.numView23)
+        sel_num_field8.setOnClickListener(this)
 
-        val sel_num_field6: TextView? = findViewById(R.id.numView21)
-        sel_num_field6!!.setOnClickListener {
-            sel_box(sel_num_field6)
-        }
+        val sel_num_field9 = findViewById<TextView>(R.id.numView24)
+        sel_num_field9.setOnClickListener(this)
 
-        val sel_num_field7: TextView? = findViewById(R.id.numView22)
-        sel_num_field7!!.setOnClickListener {
-            sel_box(sel_num_field7)
-        }
+        val sel_num_field10 = findViewById<TextView>(R.id.numView25)
+        sel_num_field10.setOnClickListener(this)
 
-        val sel_num_field8: TextView? = findViewById(R.id.numView23)
-        sel_num_field8!!.setOnClickListener {
-            sel_box(sel_num_field8)
-        }
+        //placing numbers
 
-        val sel_num_field9: TextView? = findViewById(R.id.numView24)
-        sel_num_field9!!.setOnClickListener {
-            sel_box(sel_num_field9)
-        }
+        val eqn_num_field1 = findViewById<TextView>(R.id.textView11)
+        eqn_num_field1.setOnClickListener(this)
 
-        val sel_num_field10: TextView? = findViewById(R.id.numView25)
-        sel_num_field10!!.setOnClickListener {
-            sel_box(sel_num_field10)
-        }
+        val eqn_num_field2 = findViewById<TextView>(R.id.textView12)
+        eqn_num_field2.setOnClickListener(this)
 
-        // Placing number in equation
+        val eqn_num_field3 = findViewById<TextView>(R.id.textView21)
+        eqn_num_field3.setOnClickListener(this)
 
-        fun eqn_box(eqn_field: TextView) {
-            if ((sel_num_id > 0) and ("" == eqn_field.text.toString())) {
-                eqn_field.text = sel_num
-                val sel_num_field: TextView = findViewById(sel_num_id)
-                sel_num_field.text = ""
-                sel_num = ""
-                dehglgt(sel_num_id)
-            }
-        }
+        val eqn_num_field4 = findViewById<TextView>(R.id.textView22)
+        eqn_num_field4.setOnClickListener(this)
 
-        val eqn_num_field1: TextView? = findViewById(R.id.textView11)
-        eqn_num_field1!!.setOnClickListener {
-            eqn_box(eqn_num_field1)
-        }
+        val eqn_num_field5 = findViewById<TextView>(R.id.textView31)
+        eqn_num_field5.setOnClickListener(this)
 
-        val eqn_num_field2: TextView? = findViewById(R.id.textView12)
-        eqn_num_field2!!.setOnClickListener {
-            eqn_box(eqn_num_field2)
-        }
+        val eqn_num_field6 = findViewById<TextView>(R.id.textView32)
+        eqn_num_field6.setOnClickListener(this)
 
-        val eqn_num_field3: TextView? = findViewById(R.id.textView21)
-        eqn_num_field3!!.setOnClickListener {
-            eqn_box(eqn_num_field3)
-        }
+        val eqn_num_field7 = findViewById<TextView>(R.id.textView41)
+        eqn_num_field7.setOnClickListener(this)
 
-        val eqn_num_field4: TextView? = findViewById(R.id.textView22)
-        eqn_num_field4!!.setOnClickListener {
-            eqn_box(eqn_num_field4)
-        }
+        val eqn_num_field8 = findViewById<TextView>(R.id.textView42)
+        eqn_num_field8.setOnClickListener(this)
 
-        val eqn_num_field5: TextView? = findViewById(R.id.textView31)
-        eqn_num_field5!!.setOnClickListener {
-            eqn_box(eqn_num_field5)
-        }
+        val eqn_num_field9 = findViewById<TextView>(R.id.textView51)
+        eqn_num_field9.setOnClickListener(this)
 
-        val eqn_num_field6: TextView? = findViewById(R.id.textView32)
-        eqn_num_field6!!.setOnClickListener {
-            eqn_box(eqn_num_field6)
-        }
-
-        val eqn_num_field7: TextView? = findViewById(R.id.textView41)
-        eqn_num_field7!!.setOnClickListener {
-            eqn_box(eqn_num_field7)
-        }
-
-        val eqn_num_field8: TextView? = findViewById(R.id.textView42)
-        eqn_num_field8!!.setOnClickListener {
-            eqn_box(eqn_num_field8)
-        }
-
-        val eqn_num_field9: TextView? = findViewById(R.id.textView51)
-        eqn_num_field9!!.setOnClickListener {
-            eqn_box(eqn_num_field9)
-        }
-
-        val eqn_num_field10: TextView? = findViewById(R.id.textView52)
-        eqn_num_field10!!.setOnClickListener {
-            eqn_box(eqn_num_field10)
-        }
+        val eqn_num_field10 = findViewById<TextView>(R.id.textView52)
+        eqn_num_field10.setOnClickListener(this)
 
         val reset_puzzle: Button = findViewById(R.id.reset)
         reset_puzzle.setOnClickListener {
@@ -338,5 +278,93 @@ class MainActivity : AppCompatActivity() {
         startActivity(Intent(this, MenuActivity::class.java).apply {
             putExtra("score", score)
         })
+    }
+
+    // Selecting number tile
+
+    private fun sel_box(sel_field: TextView) {
+        if (sel_field.text.toString() != "") {
+            dehglgt(sel_num_id)
+            sel_field.background = getDrawable(R.drawable.round_corner_hg)
+            sel_num = sel_field.text.toString()
+            sel_num_id = sel_field.id
+        }
+    }
+
+    // Placing number in equation
+
+    private fun eqn_box(eqn_field: TextView) {
+        if ((sel_num_id > 0) and ("" == eqn_field.text.toString())) {
+            eqn_field.text = sel_num
+            val sel_num_field: TextView = findViewById(sel_num_id)
+            sel_num_field.text = ""
+            sel_num = ""
+            dehglgt(sel_num_id)
+        }
+    }
+
+    override fun onClick(v: View?) {
+        when (v!!.id) {
+            R.id.numView11 -> {
+                sel_box(v as TextView)
+            }
+            R.id.numView12 -> {
+                sel_box(v as TextView)
+            }
+            R.id.numView13 -> {
+                sel_box(v as TextView)
+            }
+            R.id.numView14 -> {
+                sel_box(v as TextView)
+            }
+            R.id.numView15 -> {
+                sel_box(v as TextView)
+            }
+            R.id.numView21 -> {
+                sel_box(v as TextView)
+            }
+            R.id.numView22 -> {
+                sel_box(v as TextView)
+            }
+            R.id.numView23 -> {
+                sel_box(v as TextView)
+            }
+            R.id.numView24 -> {
+                sel_box(v as TextView)
+            }
+            R.id.numView25 -> {
+                sel_box(v as TextView)
+            }
+            R.id.textView11 -> {
+                eqn_box(v as TextView)
+            }
+            R.id.textView12 -> {
+                eqn_box(v as TextView)
+            }
+            R.id.textView21 -> {
+                eqn_box(v as TextView)
+            }
+            R.id.textView22 -> {
+                eqn_box(v as TextView)
+            }
+            R.id.textView31 -> {
+                eqn_box(v as TextView)
+            }
+            R.id.textView32 -> {
+                eqn_box(v as TextView)
+            }
+            R.id.textView41 -> {
+                eqn_box(v as TextView)
+            }
+            R.id.textView42 -> {
+                eqn_box(v as TextView)
+            }
+            R.id.textView51 -> {
+                eqn_box(v as TextView)
+            }
+            R.id.textView52 -> {
+                eqn_box(v as TextView)
+            }
+        }
     }
 }
